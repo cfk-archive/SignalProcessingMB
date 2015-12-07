@@ -1,2 +1,6 @@
 # sinyal2015
-matlab tatlab
+
+Cemre Karakulak
+030115219
+Sinyal İşleme
+Proje : MATLAB ile sentezleme
