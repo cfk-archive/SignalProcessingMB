@@ -1,0 +1,9 @@
+function [xx,tt]=note(f,dur) 
+Fs=8192; %ornekleme frekansý degeri
+tt=0:1/Fs:((0.25-(1/Fs))/2); %t aralýgý
+z=0; %zarf matrisinin ilk degeri
+   xx=sin(2*pi*f*tt); %sinyal x e aktarildi
+if length(xx)==length(z)   %length karsilastirilmasi
+       z=[linspace(0,1.5,Fs*dur*(2/8)),linspace(1.5,1,Fs*dur*(1/8)),linspace(1,1,Fs*dur*(4/8)),linspace(1,0,Fs*dur*(1/8))];%zarf deðerlerinin matrisi
+end
+end
