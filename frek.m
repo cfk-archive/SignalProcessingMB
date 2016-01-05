@@ -1,38 +1,52 @@
-function [ff] = frek(nota,oktav)
+function ff = frek(nota,oktav)
 
-% notalarý bir arraye at
-notalar = ['Sus','Do','Dod', 'Re', 'Mi' ,'Mib' ,'Fa', 'Fad', 'Sol', 'Sold', 'La', 'Si', 'Sib'];
+%% frek fonksiyonu
 
-% referans
-ref = 16.35;
+    %tüm notalari arraye koy
+    
+    notalar = {
+        'Do',
+        'Dod',
+        'Re',
+        'Mib',
+        'Mi',
+        'Fa',
+        'Fad',
+        'Sol',
+        'Sold',
+        'La',
+        'Sib',
+        'Si',
+        'Sus'
+    };
 
-% arrayýn boyutu
-nsize = length(notalar);
+    referans = 16.35;  %donun oktav = 0daki degeri
 
-% http://stackoverflow.com/questions/8590478/how-to-check-whether-an-argument-is-supplied-in-function-call
+    array_boyutu = length(notalar); %notalar arrayinin boyutunu al
 
-if ~exist('oktav','var') || isempty(oktav)
-  oktav = 4;
-end
-
-% oktavlarý gez [0-8]
-for oIndex=0:8
-    % parametre oktav gezerken denk gelirse
-       if oIndex == oktav
-           % notalarýn boyutu kadar for
-           for j=1:nsize
-               % char -> karakter array'ýna çevir
-               % eðer dizinin içinde baktýðýmýz nota girilen ise.s
-               if nota==char(notalar(j))
-                   % frekans formülü
-                    ff=2^oIndex*(2^((j-1)/12)*ref)
-               end  
-            end
-        end
+    % http://stackoverflow.com/questions/8590478/how-to-check-whether-an-argument-is-supplied-in-function-call
+  
+ %% oktav yoksa
+ 
+    % oktav parametresi belirlenmemisse default ata
+    if ~exist('oktav','var') || isempty(oktav) 
+      oktav = 4;
     end
-end
+    
+ %% notayý bul
+    for i = 1:array_boyutu %notalarý iterate ederek hangisine esit olduguna bak
 
-% Örnek Çýktý
+        % stringcomparison = strcmp -> http://www.mathworks.com/help/matlab/ref/strcmp.html?requestedDomain=www.mathworks.com
+        % checks whether the 2 given strings are identical.
 
-    % frek('A',0);
-    % ff = 16.3500
+        if strcmp(nota,notalar{i}) % verilen nota parametresi dizinin i.elemanýna esitmi (string comparison)
+            ff = 2^oktav*(2^((i-1)/12)*referans); % frekans formulu.
+
+        elseif strcmp(nota,notalar{13}) % eðer nota deðil de sus ise;
+            ff = 0; % frekansý 0 belirle.
+
+        end % if - end
+
+    end % for - end
+
+end % function - end
