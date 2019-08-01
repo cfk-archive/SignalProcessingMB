@@ -1,14 +1,8 @@
 # sinyal2015
 
-Cemre Karakulak
-030115219
-Sinyal İşleme
-Proje : MATLAB ile sentezleme
+Signalz.
 
-frek.m : func - girilen notanın frekansını döndürür
-
-frek_cagir.m : script - frek.m'yi çalıştırır
-
-note.m : girilen değerlere göre sinus sinyali oluşturur
-
-note_cagir.m : note.m'yi kullanarak sinyalin grafiğini çizer
+frek.m: func - returns the frequency of the entered note
+frek_cagir.m: script - runs frek.m
+note.m: generates a sine signal according to the entered values
+note_cagir.m: graphs the signal using note.m
